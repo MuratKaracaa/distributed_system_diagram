@@ -15,20 +15,20 @@
 
 ## Numeric explanations
 
-*1- Users connect to our system via web sockets and HTTP requests (only mobile clients).
-*2- New orders are dispatched to kafka.
-*3.a- Stock Service consumes new orders.
-*3.b- Stock Service writes new orders to database and creates an outbox message to be polled.
-*4.a- Fix Client acts as relay for the order outbox messages.
-*4.b- Fix Client transmits them to stock exchange via fix protocol.
-*5.a- Fix client Market Updates via fix protocol.
-*5.b- Fix client updates stock prices on database and creates outbox messages for the latest prices.
-*6- Fix client acts as its own relay for the updates stocks prices and publishes them to via redis pub/sub.
-*7- Gateway is subscribed to redis for latest price updates and publishes updates via websocket in each stocks own channel.
-*8.a - Fix Client receives Execution Reports.
-*8.b - Execution Reports are directly published to kafka.
-\*9 - Notification Service listens to Execution Reports, and notifies them
-\*10- For authentication, gateway communicates with Auth Service. For authorization, gateway accesses session data stored in distributed redis instance
+- \*1- Users connect to our system via web sockets and HTTP requests (only mobile clients).
+- \*2- New orders are dispatched to kafka.
+- \*3.a- Stock Service consumes new orders.
+- \*3.b- Stock Service writes new orders to database and creates an outbox message to be polled.
+- \*4.a- Fix Client acts as relay for the order outbox messages.
+- \*4.b- Fix Client transmits them to stock exchange via fix protocol.
+- \*5.a- Fix client Market Updates via fix protocol.
+- \*5.b- Fix client updates stock prices on database and creates outbox messages for the latest prices.
+- \*6- Fix client acts as its own relay for the updates stocks prices and publishes them to via redis pub/sub.
+- \*7- Gateway is subscribed to redis for latest price updates and publishes updates via websocket in each stocks own channel.
+- \*8.a - Fix Client receives Execution Reports.
+- \*8.b - Execution Reports are directly published to kafka.
+- \*9 - Notification Service listens to Execution Reports, and notifies them
+- \*10- For authentication, gateway communicates with Auth Service. For authorization, gateway accesses session data stored in distributed redis instance
 
 ### A&A Notes
 
