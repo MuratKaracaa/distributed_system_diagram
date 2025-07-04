@@ -1,4 +1,4 @@
-![Diagram Description](./Diagram.png)
+![Diagram Description](./new_diagram.png)
 
 ### Links for Services
 
