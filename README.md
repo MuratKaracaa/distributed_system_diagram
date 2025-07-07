@@ -45,3 +45,7 @@
 - If the authentication is successfull, a session will be created on a centralized redis instance. Websocket connections or HTTP requests will require session id in headers.
 - Only one session per user will be allowed. If a sign in request is received while there is still active session, old session will be destroyed.
 - In the case of suspicious activity, existing session will be destroyed and the biometric token version will be converted to a pretedermined invalid number equivalent to prevent future sign ins via tokens. The existing trusted device will be marked as untrusted and SMS verification will be required again.
+
+### Notes
+
+- Sharing Databases between fix_client and stock_service is not best practice, a more appropriate version would be a seperate outbox relay publishing to kafka, fix_client consuming from topic and sending via fix protocol, stock_service would still be maintaining the life cycle of orders and seperation of concernds would be more visible. Updating the latest prices should be stock_service's job as well instead of fix_client. fix_client could publish to kafka without doing any logic in the database. This is jsut a small project and such practices shouldn't be implemented in real life.
